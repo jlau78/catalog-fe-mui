@@ -25,7 +25,7 @@ ShopProductCard.propTypes = {
 };
 
 export default function ShopProductCard({ product }) {
-  const { name, cover, price, colors, status, priceSale } = product;
+  const { name, description, thumbnails, cover, price, colors, status, priceSale } = product;
 
   return (
     <Card>
@@ -45,18 +45,24 @@ export default function ShopProductCard({ product }) {
             {status}
           </Label>
         )}
-        <StyledProductImg alt={name} src={cover} />
+        {thumbnails && thumbnails.length > 0  ?
+          <StyledProductImg alt={name} src={thumbnails[0]} />
+        : <></>
+        }
+
       </Box>
 
       <Stack spacing={2} sx={{ p: 3 }}>
         <Link color="inherit" underline="hover">
           <Typography variant="subtitle2" noWrap>
-            {name}
+            {description}
           </Typography>
         </Link>
 
         <Stack direction="row" alignItems="center" justifyContent="space-between">
-          <ColorPreview colors={colors} />
+          {colors => ( 
+            <ColorPreview colors={colors} />
+          )} 
           <Typography variant="subtitle1">
             <Typography
               component="span"
