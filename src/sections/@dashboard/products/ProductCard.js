@@ -25,7 +25,7 @@ ShopProductCard.propTypes = {
 };
 
 export default function ShopProductCard({ product }) {
-  const { name, description, thumbnails, cover, price, colors, status, priceSale } = product;
+  const { name, description, images, cover, price, colors, status, priceSale } = product;
 
   return (
     <Card>
@@ -45,9 +45,15 @@ export default function ShopProductCard({ product }) {
             {status}
           </Label>
         )}
-        {thumbnails && thumbnails.length > 0  ?
-          <StyledProductImg alt={name} src={thumbnails[0]} />
-        : <></>
+        {images && images.length > 0  ?
+          <StyledProductImg alt={name} src={images[0]} />
+        : <Card sx={{
+          textAlign: 'center',
+          verticalAlign: 'center',
+          fontSize: '1.2em',
+          color: 'gray',
+          backgroundColor: 'lightblue'
+        }}>No image</Card>
         }
 
       </Box>
