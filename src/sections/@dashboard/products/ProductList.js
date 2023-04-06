@@ -17,6 +17,7 @@ ProductList.propTypes = {
 
 export default function ProductList({ products, ...other }) {
 
+  const [searchParams] = useSearchParams()
   const queryParam = searchParams.get('query')
   // const query = (queryParam === undefined) ? '' : queryParam 
   const query = queryParam || ''

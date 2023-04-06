@@ -75,11 +75,11 @@ const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
   );
 
   if (disabledLink) {
-    return <>{logo}</>;
+    return logo;
   }
 
   return (
-    <Link to="/" component={RouterLink} sx={{ display: 'contents' }}>
+    <Link component={RouterLink} to="/" sx={{ display: 'contents' }}>
       {logo}
     </Link>
   );

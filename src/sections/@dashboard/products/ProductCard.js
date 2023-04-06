@@ -8,6 +8,8 @@ import { fCurrency } from '../../../utils/formatNumber';
 import Label from '../../../components/label';
 import { ColorPreview } from '../../../components/color-utils';
 
+import ProductDetailsPage from '../../../pages/ProductDetailsPage';
+
 // ----------------------------------------------------------------------
 
 const StyledProductImg = styled('img')({
@@ -59,9 +61,9 @@ export default function ShopProductCard({ product }) {
       </Box>
 
       <Stack spacing={2} sx={{ p: 3 }}>
-        <Link color="inherit" underline="hover">
+        <Link color="inherit" underline="hover" component={ProductDetailsPage}>
           <Typography variant="subtitle2" noWrap>
-            {description}
+            test-{description}
           </Typography>
         </Link>
 
