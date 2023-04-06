@@ -1,4 +1,4 @@
-import axios, {AxiosResponse} from "axios";
+import axios from "axios";
 
 // TODO: Could not get config or config.json to work. Startup errors with webpack.
 // import config from "config";
@@ -6,7 +6,7 @@ import axios, {AxiosResponse} from "axios";
 
 // const conf = require('config.json')('../config/default.json')
 
-// const apiUrl = conf.services.internal.catalog_api.url;
+// const apiUrl = config.services.internal.catalog_api.url;
 // const apiUrl = config.get('services.internal.catalog-api.url')
 const apiUrl = "http://localhost:4000"
 
@@ -14,7 +14,7 @@ export const getItems = async() => {
 
     try {
         const items = await axios.get(
-            apiUrl + "/items"
+            `${apiUrl}/items`
         )
         return items
 
@@ -28,7 +28,7 @@ export const getItems = async() => {
 export const getItemsByQuery = async(query) => {
     try {
         const items = await axios.get(
-            apiUrl + `/items/${query}`
+            `${apiUrl}/items/${query}`
         )
         console.log(`Get item by query:${query}: items:${items}`)
 
@@ -43,7 +43,7 @@ export const getItemsByQuery = async(query) => {
 export const getItem = async(itemId)  => {
     try {
         const item = await axios.get(
-            apiUrl + `/item/${itemId}`);
+            `${apiUrl}/item/${itemId}`);
         
         return item;
 
@@ -67,7 +67,7 @@ export const addItem = async(formData) => {
         }
 
         const saveItem = await axios.post(
-            apiUrl + "/add-item",
+            `${apiUrl}/add-item`,
             item
         )
         

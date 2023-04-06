@@ -70,8 +70,8 @@ const ERROR = {
   contrastText: '#fff',
 };
 
-const palette = {
-  common: { black: '#000', white: '#fff' },
+const COMMON = {
+  common: { black: '#000000', white: '#FFFFFF' },
   primary: PRIMARY,
   secondary: SECONDARY,
   info: INFO,
@@ -80,18 +80,7 @@ const palette = {
   error: ERROR,
   grey: GREY,
   divider: alpha(GREY[500], 0.24),
-  text: {
-    primary: GREY[800],
-    secondary: GREY[600],
-    disabled: GREY[500],
-  },
-  background: {
-    paper: '#fff',
-    default: GREY[100],
-    neutral: GREY[200],
-  },
   action: {
-    active: GREY[600],
     hover: alpha(GREY[500], 0.08),
     selected: alpha(GREY[500], 0.16),
     disabled: alpha(GREY[500], 0.8),
@@ -102,4 +91,42 @@ const palette = {
   },
 };
 
-export default palette;
+export default function palette(themeMode)  {
+  const light = {
+    ...COMMON,
+    mode: 'light',
+    text: {
+      primary: GREY[800],
+      secondary: GREY[600],
+      disabled: GREY[500],
+    },
+    background: { paper: '#FFFFFF', default: '#FFFFFF', neutral: GREY[200] },
+    action: {
+      ...COMMON.action,
+      active: GREY[600],
+    },
+  };
+
+  const dark = {
+    ...COMMON,
+    mode: 'dark',
+    text: {
+      primary: '#FFFFFF',
+      secondary: GREY[500],
+      disabled: GREY[600],
+    },
+    background: {
+      paper: GREY[800],
+      default: GREY[900],
+      neutral: alpha(GREY[500], 0.16),
+    },
+    action: {
+      ...COMMON.action,
+      active: GREY[500],
+    },
+  };
+
+  return themeMode === 'light' ? light: dark;
+
+};
+
