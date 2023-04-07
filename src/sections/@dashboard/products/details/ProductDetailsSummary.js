@@ -44,6 +44,7 @@ export default function ProductDetailsSummary({ cart, product, onAddCart, onGoto
   const {
     id,
     name,
+    description,
     sizes,
     price,
     cover,
@@ -56,14 +57,15 @@ export default function ProductDetailsSummary({ cart, product, onAddCart, onGoto
     inventoryType,
   } = product;
 
-  const alreadyProduct = cart.map((item) => item.id).includes(id);
+  const alreadyProduct = cart !== undefined ? cart.map((item) => item.id).includes(id) : 0;
 
   const isMaxQuantity =
-    cart.filter((item) => item.id === id).map((item) => item.quantity)[0] >= available;
+    cart !== undefined ? cart.filter((item) => item.id === id).map((item) => item.quantity)[0] >= available : false;
 
   const defaultValues = {
     id,
     name,
+    description,
     cover,
     available,
     price,
@@ -145,7 +147,7 @@ export default function ProductDetailsSummary({ cart, product, onAddCart, onGoto
             {status}
           </Typography>
 
-          <Typography variant="h5">{name}</Typography>
+          <Typography variant="h5">product-name:{name}</Typography>
 
           <Stack direction="row" alignItems="center" spacing={1}>
             <Rating value={totalRating} precision={0.1} readOnly />
@@ -172,6 +174,7 @@ export default function ProductDetailsSummary({ cart, product, onAddCart, onGoto
 
         <Divider sx={{ borderStyle: 'dashed' }} />
 
+        {(colors) => (
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Typography variant="subtitle2">Color</Typography>
 
@@ -193,7 +196,9 @@ export default function ProductDetailsSummary({ cart, product, onAddCart, onGoto
             )}
           />
         </Stack>
+        )}
 
+        {(sizes) => (
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="subtitle2" sx={{ height: 40, lineHeight: '40px', flexGrow: 1 }}>
             Size
@@ -223,6 +228,7 @@ export default function ProductDetailsSummary({ cart, product, onAddCart, onGoto
             ))}
           </RHFSelect>
         </Stack>
+        )}
 
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="subtitle2" sx={{ height: 36, lineHeight: '36px' }}>

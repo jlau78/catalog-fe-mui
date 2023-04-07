@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import {Link as RouterLink} from 'react-router-dom'
 // @mui
 import { Box, Card, Link, Typography, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -7,8 +8,6 @@ import { fCurrency } from '../../../utils/formatNumber';
 // components
 import Label from '../../../components/label';
 import { ColorPreview } from '../../../components/color-utils';
-
-import ProductDetailsPage from '../../../pages/ProductDetailsPage';
 
 // ----------------------------------------------------------------------
 
@@ -61,9 +60,9 @@ export default function ShopProductCard({ product }) {
       </Box>
 
       <Stack spacing={2} sx={{ p: 3 }}>
-        <Link color="inherit" underline="hover" component={ProductDetailsPage}>
+        <Link to="/dashboard/item-detail" component={RouterLink} color="inherit" underline="hover">
           <Typography variant="subtitle2" noWrap>
-            test-{description}
+            {description}
           </Typography>
         </Link>
 

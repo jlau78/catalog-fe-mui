@@ -3,7 +3,6 @@ import { useState } from 'react';
 
 // @mui
 import { Container, Box, Card, Stack, Typography } from '@mui/material';
-
 import ProductDetailsSummary from '../sections/@dashboard/products/details/ProductDetailsSummary';
 
 export default function ProductDetailsPage(product) {
@@ -12,7 +11,7 @@ export default function ProductDetailsPage(product) {
         <>
 
         <Container>
-            <Typography variant="h4" sx={{ mb: 5 }}>
+            <Typography variant="h6" sx={{ mb: 5 }}>
             Product
             </Typography>
 
